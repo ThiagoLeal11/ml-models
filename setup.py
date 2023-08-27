@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name='ml_models',
     description='Custom models for deeplearning.',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/ThiagoLeal11/ml-models',
     author='Thiago L. Pozati',
     author_email='thiagoleal11@gmail.com',
