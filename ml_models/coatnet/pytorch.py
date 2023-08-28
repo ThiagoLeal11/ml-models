@@ -5,7 +5,7 @@ import torch.nn as nn
 from einops import rearrange
 from einops.layers.torch import Rearrange
 
-from ml_model.coatnet.config import ModelConfig
+from config import ModelConfig
 
 
 def conv_3x3_bn(inp, oup, image_size, downsample=False):
