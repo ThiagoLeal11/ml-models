@@ -242,18 +242,26 @@ class CoAtNet(nn.Module):
         return nn.Sequential(*layers)
 
 
-def create_coatnet(config: ModelConfig) -> nn.Module:
+def create_coatnet(config: ModelConfig, freeze_backbone: bool = False) -> nn.Module:
     image_size = config.input.size
     if isinstance(image_size, int):
         image_size = (image_size, image_size)
 
-    return CoAtNet(
+    model = CoAtNet(
         image_size,
         config.input.channels,
         config.num_blocks,
         config.channels,
         config.input.classes,
     )
+
+    if freeze_backbone:
+        for param in model.parameters():
+            param.requires_grad = False
+        for param in model.fc.parameters():
+            param.requires_grad = True
+
+    return model
 
 
 def coatnet_0():
